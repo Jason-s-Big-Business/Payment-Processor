@@ -1,18 +1,36 @@
-#!/usr/bin/env python3
-"""
-Payment-Processor - Secure payment processing system with multiple payment gateway integrations.
-"""
+import logging
+import sys
+from datetime import datetime
 
-def main():
-    print("Welcome to Payment-Processor!")
-    print("This is a sample Python application.")
-    
-    # Add some basic functionality
-    data = ["item1", "item2", "item3"]
-    for item in data:
-        print(f"Processing: {item}")
-    
-    print("Application completed successfully!")
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('payment_processor.log'),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+
+logger = logging.getLogger(__name__)
+
+def run_payment_processor():
+    """Main application function with enhanced error handling"""
+    try:
+        logger.info(f"Starting Payment-Processor application...")
+        
+        # Simulate some business logic
+        for i in range(5):
+            logger.info(f"Processing step {i+1} for Payment-Processor...")
+            time.sleep(0.1)  # Simulate work
+            
+        logger.info(f"Payment-Processor application completed successfully.")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error in Payment-Processor: {e}")
+        return False
 
 if __name__ == "__main__":
-    main()
+    success = run_payment_processor()
+    sys.exit(0 if success else 1)
